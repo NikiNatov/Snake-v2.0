@@ -1,0 +1,6 @@
+C:\Dev\C#\Snake\Engine\obj\Release\Engine.csprojAssemblyReference.cache
+C:\Dev\C#\Snake\Engine\obj\Release\Engine.csproj.CoreCompileInputs.cache
+C:\Dev\C#\Snake\Engine\obj\Release\Engine.dll
+C:\Dev\C#\Snake\Engine\obj\Release\Engine.pdb
+C:\Dev\C#\Snake\Engine.dll
+C:\Dev\C#\Snake\Engine.pdb

@@ -1,0 +1,125 @@
+﻿<UserControl x:Class="SnakeGame.UI.MainMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SnakeGame.UI"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" 
+             Height="992" Width="1524">
+    <!-- Styles -->
+    <UserControl.Resources>
+        <!-- Difficulty TextBlock Style-->
+        <Style TargetType="TextBlock" x:Key="DifficultyTextBlock">
+            <Style.Triggers>
+                <Trigger Property="TextBlock.Text" Value="Easy">
+                    <Setter Property="Foreground" Value="Green" />
+                </Trigger>
+                <Trigger Property="TextBlock.Text" Value="Medium">
+                    <Setter Property="Foreground" Value="Yellow" />
+                </Trigger>
+                <Trigger Property="TextBlock.Text" Value="Hard">
+                    <Setter Property="Foreground" Value="Red" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Menu Button Style-->
+        <Style TargetType="Button" x:Key="MenuButtonStyle">
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="8"/>
+            <Setter Property="FontFamily" Value="Ariel"/>
+            <Setter Property="FontSize" Value="50"/>
+            <Setter Property="Width" Value="600"/>
+            <Setter Property="Height" Value="80"/>
+        </Style>
+
+        <!-- Close Button Style -->
+        <Style TargetType="Button" x:Key="CloseButtonStyle">
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="4"/>
+            <Setter Property="FontFamily" Value="Ariel"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Width" Value="30"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+        </Style>
+
+        <!-- Border Style -->
+        <Style TargetType="Border" x:Key="BorderStyle">
+            <Setter Property="Padding" Value="20"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderThickness" Value="6"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="Width" Value="700"/>
+            <Setter Property="Height" Value="600"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+    </UserControl.Resources>
+    
+    <Border>
+        <Border.Background>
+            <ImageBrush ImageSource="pack://application:,,,/Resource/main_menu_background.png"/>
+        </Border.Background>
+        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <!-- Difficulty text block -->
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Foreground="White" Text="Difficulty:" FontWeight="Bold" FontSize="40" Margin="20, 20, 0, 20"/>
+                <TextBlock Text="{Binding Path=DifficultyLevel}" FontWeight="Bold" FontSize="40" Margin="20" Style="{StaticResource DifficultyTextBlock}"/>
+            </StackPanel>
+
+            <!-- Menu Buttons -->
+            <StackPanel HorizontalAlignment="Center" Grid.Row="1" Grid.Column="0">
+                <Button Content="Start Game" FontSize="50" Margin="10, 30, 10, 10" Style="{StaticResource MenuButtonStyle}"
+                        Command="{Binding DataContext.StartGameCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" />
+                <Button Content="Change Difficulty" FontSize="50" Margin="10, 10, 10, 10" Style="{StaticResource MenuButtonStyle}"
+                        Click="OnChangeDifficultyPress"/>
+                <Button Content="Help" FontSize="50" Margin="10, 10, 10, 10" Style="{StaticResource MenuButtonStyle}"
+                        Click="OnChangeHelperPress"/>
+                <Button Content="Exit" FontSize="50" Margin="10, 10, 10, 10" Style="{StaticResource MenuButtonStyle}" 
+                        Command="{Binding DataContext.ExitCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"/>
+            </StackPanel>
+
+            <!-- Difficulty Settings -->
+            <Border x:Name="DifficultyWindow" Visibility="Collapsed" Grid.RowSpan="2" Grid.ColumnSpan="2" Style="{StaticResource BorderStyle}">
+                <StackPanel>
+                    <Button Content="X" Style="{StaticResource CloseButtonStyle}" Click="OnDifficultyWindowClose"/>
+                    
+                    <TextBlock Text="Difficulty" FontFamily="Arial" HorizontalAlignment="Center" FontSize="50" FontWeight="Bold" Margin="0, 0, 0 60"/>
+                    
+                    <Button x:Name="BtnEasy" Content="Easy" Margin="0, 0, 0 60" Style="{StaticResource MenuButtonStyle}"
+                            Command="{Binding ChangeDifficultyCommand}" CommandParameter="{Binding Content, ElementName=BtnEasy}"/>
+
+                    <Button x:Name="BtnMedium" Content="Medium" Margin="0, 0, 0 60" Style="{StaticResource MenuButtonStyle}"
+                            Command="{Binding ChangeDifficultyCommand}" CommandParameter="{Binding Content, ElementName=BtnMedium}"/>
+
+                    <Button x:Name="BtnHard" Content="Hard" Margin="0, 0, 0 60" Style="{StaticResource MenuButtonStyle}"
+                            Command="{Binding ChangeDifficultyCommand}" CommandParameter="{Binding Content, ElementName=BtnHard}"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Helper Window -->
+            <Border x:Name="HelperWindow" Visibility="Collapsed" Grid.RowSpan="2" Grid.ColumnSpan="2" Style="{StaticResource BorderStyle}">
+                <StackPanel>
+                    <Button Content="X" Style="{StaticResource CloseButtonStyle}"
+                            Click="OnHelperWindowClose"/>
+                    <TextBlock Text="Rules" FontFamily="Arial" HorizontalAlignment="Center" FontSize="50" FontWeight="Bold" Margin="0, 0, 0 60"/>
+                    <TextBlock FontFamily="Arial" FontSize="30" TextWrapping="Wrap">
+                        Move the snake with the mouse and try to eat as many fruits as possible to get points. 
+                        Avoid hitting rocks as that will result in a loss.
+                    </TextBlock>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Border>
+</UserControl>
