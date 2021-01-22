@@ -73,6 +73,7 @@
     <Compile Include="Game\GameDifficulty.cs" />
     <Compile Include="Game\GameState.cs" />
     <Compile Include="Game\Obstacle.cs" />
+    <Compile Include="Game\Potion.cs" />
     <Compile Include="Game\SnakeComponent.cs" />
     <Compile Include="UI\Game.xaml.cs">
       <DependentUpon>Game.xaml</DependentUpon>
@@ -153,36 +154,6 @@
     <Resource Include="Assets\Textures\bush.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Textures\dirt.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\Textures\fruit.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\Textures\fruit2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\Textures\ground.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\Textures\heart.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\Textures\obstacle.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\Textures\snake_body.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\Textures\snake_head.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\Textures\snake_tail.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\Textures\stone.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Assets\Textures\white_texture.png" />
   </ItemGroup>
   <ItemGroup>
@@ -193,6 +164,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Levels\medium_map.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Textures\Obstacles\ground.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.6.3.0\build\Fody.targets" Condition="Exists('..\packages\Fody.6.3.0\build\Fody.targets')" />

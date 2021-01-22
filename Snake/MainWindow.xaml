@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
-        Title="Snake" Height="992" Width="1524">
+        Title="Snake" Height="1000" Width="1524">
     
     <ContentControl Content="{Binding Path=CurrentView}">
         <ContentControl.Resources>

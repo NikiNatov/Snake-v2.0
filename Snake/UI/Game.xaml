@@ -8,6 +8,81 @@
              mc:Ignorable="d" 
              d:DesignHeight="992" d:DesignWidth="1524" MouseMove="OnMouseMove">
     <UserControl.Resources>
+        <Style TargetType="TextBlock" x:Key="DifficultyTextBlock">
+            <Style.Triggers>
+                <Trigger Property="TextBlock.Text" Value="Easy">
+                    <Setter Property="Foreground" Value="Green" />
+                </Trigger>
+                <Trigger Property="TextBlock.Text" Value="Medium">
+                    <Setter Property="Foreground" Value="Yellow" />
+                </Trigger>
+                <Trigger Property="TextBlock.Text" Value="Hard">
+                    <Setter Property="Foreground" Value="Red" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Menu Button Style-->
+        <Style TargetType="Button" x:Key="MenuButtonStyle">
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="8"/>
+            <Setter Property="FontFamily" Value="Ariel"/>
+            <Setter Property="FontSize" Value="50"/>
+            <Setter Property="Width" Value="600"/>
+            <Setter Property="Height" Value="80"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" CornerRadius="15" BorderBrush="Black" Background="White" BorderThickness="4" Padding="2">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" TargetName="border" Value="LightGray"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Close Button Style -->
+        <Style TargetType="Button" x:Key="CloseButtonStyle">
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="4"/>
+            <Setter Property="FontFamily" Value="Ariel"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Width" Value="30"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" CornerRadius="6" BorderBrush="Black" Background="White" BorderThickness="4" Padding="2">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" TargetName="border" Value="LightGray"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Border Style -->
+        <Style TargetType="Border" x:Key="BorderStyle">
+            <Setter Property="Padding" Value="20"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderThickness" Value="6"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="Width" Value="700"/>
+            <Setter Property="Height" Value="600"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="CornerRadius" Value="40"/>
+        </Style>
+
         <snake:PauseMenuVisibilityConverter x:Key="PauseMenuVisibility"/>
         <snake:GameOverMenuVisibilityConverter x:Key="GameOverMenuVisibility"/>
     </UserControl.Resources>
@@ -19,7 +94,7 @@
 
         <Canvas Grid.Column="0" Width="960" Height="992" x:Name="canvas">
             <Canvas.Background>
-                <ImageBrush ImageSource="pack://application:,,,/Assets/Textures/ground.png" Viewport="0, 0, 0.16, 0.16" TileMode="Tile"/>
+                <ImageBrush ImageSource="pack://application:,,,/Assets/Textures/Obstacles/ground.png" Viewport="0, 0, 0.16, 0.16" TileMode="Tile"/>
             </Canvas.Background>
             <!-- Drawing all the entities in the world as rectangles -->
             <ItemsControl ItemsSource="{Binding Path=GameObjects}">
@@ -63,6 +138,19 @@
                             </Rectangle.RenderTransform>
                         </Rectangle>
                     </DataTemplate>
+
+                    <!-- Potion representation template-->
+                    <DataTemplate DataType="{x:Type snake:Potion}">
+                        <Rectangle Width="{Binding Path=Width}" Height="{Binding Path=Height}" Fill="{Binding Path=Texture.Brush}" RenderTransformOrigin="0.5, 0.5">
+                            <Rectangle.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform x:Name="scaleTransform"  ScaleX="{Binding Path=Transformation.Scale.X}" ScaleY="{Binding Path=Transformation.Scale.Y}"/>
+                                    <RotateTransform x:Name="rotateTransform"  Angle="{Binding Path=Transformation.RotationAngle}"/>
+                                    <TranslateTransform x:Name="translateTransform"  X="{Binding Path=Transformation.Position.X}" Y="{Binding Path=Transformation.Position.Y}"/>
+                                </TransformGroup>
+                            </Rectangle.RenderTransform>
+                        </Rectangle>
+                    </DataTemplate>
                 </ItemsControl.Resources>
 
                 <!-- Panel style-->
@@ -82,74 +170,106 @@
             </StackPanel.Background>
 
             <!-- Render score -->
-            <StackPanel Orientation="Horizontal" Margin="40">
-                <Label Foreground="White" FontSize="50" FontWeight="Bold"  Content="Score:"/>
-                <Label Foreground="White" FontSize="50" FontWeight="Bold"  Content="{Binding Path=Score}"/>
+            <StackPanel Orientation="Horizontal" Margin="40,10,40,10">
+                <Label Foreground="White" FontSize="40" FontWeight="Bold"  Content="Score:"/>
+                <Label Foreground="White" FontSize="40" FontWeight="Bold"  Content="{Binding Path=Score}"/>
             </StackPanel>
 
-            <Border Background="Green" BorderBrush="Black" BorderThickness="10" Height="440" Margin="40" Padding="20">
-                <!-- Render fruits on the board -->
-                <ItemsControl ItemsSource="{Binding GameObjects}">
-                    <ItemsControl.Resources>
+            <!-- Difficulty text block -->
+            <StackPanel Orientation="Horizontal" Margin="40,10,40,10">
+                <TextBlock Foreground="White" Text="Difficulty:" FontWeight="Bold" FontSize="40"/>
+                <TextBlock Text="{Binding Path=DifficultyLevel}" FontWeight="Bold" FontSize="40" Margin="10, 0, 0, 0" Style="{StaticResource DifficultyTextBlock}"/>
+            </StackPanel>
+  
+            <!-- Eatable objects display-->
+            <Border Background="Green" CornerRadius="30" BorderBrush="White" BorderThickness="5" Height="440" Margin="40, 20, 40, 10" Padding="5">
+                <StackPanel HorizontalAlignment="Center">
+                    <TextBlock FontWeight="Bold" Foreground="White" FontSize="40" Text="Eatable objects: " Margin="0, 0, 0, 20"/>
 
-                        <!-- If the type is a fruit display stats -->
-                        <DataTemplate DataType="{x:Type snake:Fruit}">
-                            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                                <Rectangle Width="64" Height="64" Fill="{Binding Path=Texture.Brush}" Margin="20,0,60,0"/>
-                                <TextBlock FontSize="50" Foreground="White" Text="+"/>
-                                <TextBlock FontSize="50" Foreground="White" Text="{Binding Path=ScorePoints}"/>
-                                <TextBlock FontSize="50" Foreground="White" Text=" Points"/>
-                            </StackPanel>
-                        </DataTemplate>
+                    <!-- Render fruits on the board -->
+                    <ItemsControl ItemsSource="{Binding GameObjects}">
+                        <ItemsControl.Resources>
 
-                        <DataTemplate DataType="{x:Type snake:SnakeComponent}">
+                            <!-- If the type is a fruit display stats -->
+                            <DataTemplate DataType="{x:Type snake:Fruit}">
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <Rectangle Width="54" Height="54" Fill="{Binding Path=Texture.Brush}" Margin="0,0,60,0"/>
+                                    <TextBlock FontSize="36" Foreground="White" Text="+"/>
+                                    <TextBlock FontSize="36" Foreground="White" Text="{Binding Path=ScorePoints}"/>
+                                    <TextBlock FontSize="36" Foreground="White" Text=" Points"/>
+                                </StackPanel>
+                            </DataTemplate>
 
-                        </DataTemplate>
+                            <!-- If the type is a potion display effect -->
+                            <DataTemplate DataType="{x:Type snake:Potion}">
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <Rectangle Width="54" Height="54" Fill="{Binding Path=Texture.Brush}" Margin="0,0,60,0"/>
+                                    <TextBlock FontSize="36" Foreground="White" Text="{Binding Path=Effect}"/>
+                                </StackPanel>
+                            </DataTemplate>
 
-                        <DataTemplate DataType="{x:Type snake:Obstacle}">
+                            <!-- If the type is a snake component do not display -->
+                            <DataTemplate DataType="{x:Type snake:SnakeComponent}">
+                            </DataTemplate>
 
-                        </DataTemplate>
-                    </ItemsControl.Resources>
+                            <!-- If the type is an obstacle do not display -->
+                            <DataTemplate DataType="{x:Type snake:Obstacle}">
+                            </DataTemplate>
+                        </ItemsControl.Resources>
 
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <StackPanel/>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel HorizontalAlignment="Center"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
 
-                </ItemsControl>
+                    </ItemsControl>
+                </StackPanel>
             </Border>
-            
+
+            <!-- Special effect display-->
+            <Border Background="Green" CornerRadius="30" BorderBrush="White" BorderThickness="5" Height="240" Margin="40" Padding="5">
+                <StackPanel HorizontalAlignment="Center">
+                    <TextBlock HorizontalAlignment="Center" FontWeight="Bold" Foreground="White" FontSize="40" Text="Active special effect: " Margin="0, 0, 0, 50"/>
+                       
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                        <Rectangle Width="54" Height="54" Fill="{Binding Path=ActivePotion.Texture.Brush}" Margin="0,0,60,0"/>
+                        <TextBlock FontSize="36" Foreground="White" Text="{Binding Path=ActivePotion.Effect}" Margin="0,0,60,0"/>
+                        <TextBlock FontSize="36" Foreground="White" Text="{Binding Path=PotionEffectRemainingTime}"/>
+                        <TextBlock FontSize="36" Foreground="White" Text="s"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
         </StackPanel>
 
         <!-- Pause Menu -->
-        <Border x:Name="PauseMenu" Visibility="{Binding State, Converter={StaticResource PauseMenuVisibility}}" Padding="20" Grid.RowSpan="2" Background="White" Grid.ColumnSpan="2" BorderBrush="Black" BorderThickness="6" HorizontalAlignment="Center" Width="600" Height="600">
+        <Border x:Name="PauseMenu" Visibility="{Binding State, Converter={StaticResource PauseMenuVisibility}}" Grid.RowSpan="2" Grid.ColumnSpan="2" Style="{StaticResource BorderStyle}">
             <StackPanel>
-                <Button Width="30" Height="30" BorderBrush="Black" BorderThickness="4" Content="X" HorizontalAlignment="Right" FontWeight="Bold"
+                <Button Content="X" Style="{StaticResource CloseButtonStyle}"
                         Command="{Binding UnpauseCommand}"/>
                 <TextBlock Text="Pause" FontFamily="Arial" HorizontalAlignment="Center" FontSize="50" FontWeight="Bold" Margin="0, 0, 0 60"/>
-                <Button BorderBrush="Black" BorderThickness="8" Content="Continue" FontSize="50" FontFamily="Arial"  Margin="0, 0, 0 60"
+                <Button Content="Continue" Style="{StaticResource MenuButtonStyle}"  Margin="0, 0, 0 60"
                         Command="{Binding UnpauseCommand}"/>
-                <Button BorderBrush="Black" BorderThickness="8" Content="Return to the Menu" FontSize="50" FontFamily="Arial"  Margin="0, 0, 0 60"
+                <Button Content="Return to the Menu" Style="{StaticResource MenuButtonStyle}" Margin="0, 0, 0 60"
                         Command="{Binding DataContext.MainMenuCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"/>
-                <Button BorderBrush="Black" BorderThickness="8" Content="Exit" FontSize="50" FontFamily="Arial"  Margin="0, 0, 0 60" 
+                <Button Content="Exit" Style="{StaticResource MenuButtonStyle}" Margin="0, 0, 0 60" 
                         Command="{Binding DataContext.ExitCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"/>
             </StackPanel>
         </Border>
 
         <!-- Game over menu-->
-        <Border x:Name="GameOverScreen" Visibility="{Binding State, Converter={StaticResource GameOverMenuVisibility}}" Padding="20" Grid.RowSpan="2" Background="White" Grid.ColumnSpan="2" BorderBrush="Black" BorderThickness="6" HorizontalAlignment="Center" Width="600" Height="600">
+        <Border x:Name="GameOverScreen" Visibility="{Binding State, Converter={StaticResource GameOverMenuVisibility}}" Grid.RowSpan="2" Grid.ColumnSpan="2" Style="{StaticResource BorderStyle}">
             <StackPanel>
                 <TextBlock Text="You lose" FontFamily="Arial" HorizontalAlignment="Center" FontSize="50" FontWeight="Bold" Margin="0, 0, 0 10"/>
                 <StackPanel Orientation="Horizontal" Margin="0, 0, 0 60" HorizontalAlignment="Center">
                     <TextBlock Text="Score: " FontFamily="Arial" HorizontalAlignment="Center" FontSize="50" FontWeight="Bold" />
                     <TextBlock Text="{Binding Score}" FontFamily="Arial" HorizontalAlignment="Center" FontSize="50" FontWeight="Bold"/>
                 </StackPanel>
-                <Button Content="New Game" BorderBrush="Black" BorderThickness="8" FontSize="50" FontFamily="Arial"  Margin="0, 0, 0 40"
+                <Button Content="New Game" Style="{StaticResource MenuButtonStyle}"  Margin="0, 0, 0 40"
                         Command="{Binding RestartCommand}"/>
-                <Button Content="Return to the Menu"  BorderBrush="Black" BorderThickness="8" FontSize="50" FontFamily="Arial"  Margin="0, 0, 0 40"
+                <Button Content="Return to the Menu" Style="{StaticResource MenuButtonStyle}" Margin="0, 0, 0 40"
                         Command="{Binding DataContext.MainMenuCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"/>
-                <Button BorderBrush="Black" BorderThickness="8" Content="Exit" FontSize="50" FontFamily="Arial"  Margin="0, 0, 0 60" 
+                <Button Content="Exit" Style="{StaticResource MenuButtonStyle}" Margin="0, 0, 0 60" 
                         Command="{Binding DataContext.ExitCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"/>
             </StackPanel>
         </Border>

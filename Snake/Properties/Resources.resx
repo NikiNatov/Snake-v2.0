@@ -121,26 +121,14 @@
   <data name="bush" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Textures\bush.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="dirt" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Textures\dirt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="easy_map" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Levels\easy_map.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="fruit" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Textures\fruit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="fruit2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Textures\fruit2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="ground" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Textures\ground.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Assets\Textures\Obstacles\ground.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="hard_map" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Levels\hard_map.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="heart" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Textures\heart.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="main_menu_background" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resource\main_menu_background.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -148,23 +136,8 @@
   <data name="medium_map" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Levels\medium_map.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="obstacle" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Textures\obstacle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="score_board_background" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resource\score_board_background.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="snake_body" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Textures\snake_body.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="snake_head" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Textures\snake_head.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="snake_tail" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Textures\snake_tail.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="stone" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Textures\stone.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="white_texture" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Textures\white_texture.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

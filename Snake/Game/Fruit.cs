@@ -33,7 +33,7 @@ namespace SnakeGame
         #region Constructors
 
         /// <summary>
-        /// General use constructor that initialized a fruit with specified score points, texture, position and rotation
+        /// General use constructor that initialized a fruit with specified score points, texture, position, rotation and scale
         /// </summary>
         /// <param name="scorePoints">The amount of score points the fruit gives</param>
         /// <param name="texture">The texture of the fruit</param>
@@ -55,7 +55,7 @@ namespace SnakeGame
         /// <param name="height">The height of the fruit</param>
         /// <param name="texture">The texture applied to the fruit</param>
         /// <param name="transformation">The transformation of the fruit</param>
-        protected Fruit(int scorePoints, int width, int height, Texture texture, Transformation transformation)
+        public Fruit(int scorePoints, int width, int height, Texture texture, Transformation transformation)
             : base(width, height, texture, transformation)
         {
             Type = GameObjectType.Fruit;

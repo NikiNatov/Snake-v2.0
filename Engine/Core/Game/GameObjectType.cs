@@ -16,6 +16,11 @@
         Fruit,
 
         /// <summary>
+        /// Potion
+        /// </summary>
+        Potion,
+
+        /// <summary>
         /// Collidable obstacle
         /// </summary>
         Obstacle
