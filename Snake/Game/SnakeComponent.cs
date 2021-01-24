@@ -1,8 +1,10 @@
 ﻿using System.Windows;
 using Engine;
+using PropertyChanged;
 
 namespace SnakeGame
 {
+    [AddINotifyPropertyChangedInterface]
     /// <summary>
     /// Representes a piece of the snake body
     /// </summary>

@@ -206,12 +206,7 @@ namespace SnakeGame
 
                     if (newPos != objectPos)
                     {
-                        if (i == GameObjects.Count - 1)
-                            GameObjects[i] = new SnakeComponent(SNAKE_WIDTH, SNAKE_HEIGHT, TextureManager.GetTexture("Assets/Textures/Snake/snake_head.png"), new Transformation(newPos, angle));
-                        else if (i == mTailIndex)
-                            GameObjects[i] = new SnakeComponent(SNAKE_WIDTH, SNAKE_HEIGHT, TextureManager.GetTexture("Assets/Textures/Snake/snake_tail.png"), new Transformation(newPos, angle));
-                        else
-                            GameObjects[i] = new SnakeComponent(SNAKE_WIDTH, SNAKE_HEIGHT, TextureManager.GetTexture("Assets/Textures/Snake/snake_body.png"), new Transformation(newPos, angle));
+                        GameObjects[i].Transformation = new Transformation(newPos, angle);              
                     }
                 }
             }
@@ -438,8 +433,8 @@ namespace SnakeGame
             TextureManager.UploadTexture("Assets/Textures/Snake/snake_tail.png");
 
             // Obstacles
-            TextureManager.UploadTexture("Assets/Textures/Obstacles/obstacle.png");
             TextureManager.UploadTexture("Assets/Textures/Obstacles/ground.png");
+            TextureManager.UploadTexture("Assets/Textures/Obstacles/bush.png");
 
             // Fruits
             TextureManager.UploadTexture("Assets/Textures/Fruits/pineapple.png");
@@ -471,7 +466,7 @@ namespace SnakeGame
             for (int i = 0; i < WorldMap.Width; i++)
                 for (int j = 0; j < WorldMap.Height; j++)
                     if (WorldMap.MapData[j * 4 + i * WorldMap.Stride] == 0 && WorldMap.MapData[j * 4 + 1 + i * WorldMap.Stride] == 0 && WorldMap.MapData[j * 4 + 2 + i * WorldMap.Stride] == 0)
-                        GameObjects.Add(new Obstacle(TILE_SIZE, TILE_SIZE, TextureManager.GetTexture("Assets/Textures/Obstacles/obstacle.png"), new Point(j * TILE_SIZE, i * TILE_SIZE), 0, new Point(1.0, 1.0)));
+                        GameObjects.Add(new Obstacle(TILE_SIZE, TILE_SIZE, TextureManager.GetTexture("Assets/Textures/Obstacles/bush.png"), new Point(j * TILE_SIZE, i * TILE_SIZE), 0, new Point(1.0, 1.0)));
         }
 
         /// <summary>

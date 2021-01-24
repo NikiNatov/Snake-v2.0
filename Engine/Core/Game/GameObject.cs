@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Media;
 
@@ -9,9 +10,32 @@ namespace Engine
     /// Class representing a base game object in the game world. The intended functionality for this class is
     /// to be inherited when creating object for the specific type of game the user is creating.
     /// </summary>
-    public abstract class GameObject
+    public abstract class GameObject : INotifyPropertyChanged
     {
+        #region Events
+
+        /// <summary>
+        /// Property changed event
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Called when a property changes its value
+        /// </summary>
+        /// <param name="name"></param>
+        public void OnPropertyChanged(string name)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
+        #endregion
+
         #region Data members
+
+        /// <summary>
+        /// Object type
+        /// </summary>
+        protected GameObjectType mType;
 
         /// <summary>
         /// Texture data
@@ -40,7 +64,18 @@ namespace Engine
         /// <summary>
         /// Get or protected sets the type of the game object ( SnakeComponent, Fruit, Obstacle )
         /// </summary>
-        public GameObjectType Type { get; protected set; }
+        public GameObjectType Type
+        {
+            get { return mType; }
+            protected set
+            {
+                if(value != mType)
+                {
+                    mType = value;
+                    OnPropertyChanged(nameof(Type));
+                }
+            }
+        }
 
         /// <summary>
         /// Gets or sets the Texture of the game object
@@ -48,7 +83,14 @@ namespace Engine
         public Texture Texture
         {
             get { return mTexture; }
-            set { mTexture = value != null ? value : TextureManager.GetTexture("white_texture.png"); }
+            set 
+            {
+                if (value != mTexture)
+                {
+                    mTexture = value != null ? value : TextureManager.GetTexture("white_texture.png");
+                    OnPropertyChanged(nameof(Texture));
+                }
+            }
         }
 
         /// <summary>
@@ -57,7 +99,14 @@ namespace Engine
         public Transformation Transformation
         {
             get { return mTransformation; }
-            set { mTransformation = value != null ? value : new Transformation(new Point(0.0, 0.0), 0); }
+            set 
+            {
+                if (value != mTransformation)
+                {
+                    mTransformation = value != null ? value : new Transformation(new Point(0.0, 0.0), 0);
+                    OnPropertyChanged(nameof(Transformation));
+                }
+            }
         }
 
         /// <summary>
@@ -66,7 +115,14 @@ namespace Engine
         public int Width
         {
             get { return mWidth; }
-            set { mWidth = value > 0 ? value : 1; }
+            set 
+            {
+                if (value != mWidth)
+                {
+                    mWidth = value > 0 ? value : 1;
+                    OnPropertyChanged(nameof(Width));
+                }
+            }
         }
 
         /// <summary>
@@ -75,7 +131,14 @@ namespace Engine
         public int Height
         {
             get { return mHeight; }
-            set { mHeight = value > 0 ? value : 1; }
+            set 
+            {
+                if (value != mHeight)
+                {
+                    mHeight = value > 0 ? value : 1;
+                    OnPropertyChanged(nameof(Height));
+                }
+            }
         }
 
         #endregion

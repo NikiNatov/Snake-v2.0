@@ -114,7 +114,7 @@
                 <Button Content="Change Difficulty" FontSize="50" Margin="10, 10, 10, 10" Style="{StaticResource MenuButtonStyle}"
                         Click="OnChangeDifficultyPress"/>
                 <Button Content="Help" FontSize="50" Margin="10, 10, 10, 10" Style="{StaticResource MenuButtonStyle}"
-                        Click="OnChangeHelperPress"/>
+                        Click="OnHelperPress"/>
                 <Button Content="Exit" FontSize="50" Margin="10, 10, 10, 10" Style="{StaticResource MenuButtonStyle}" 
                         Command="{Binding DataContext.ExitCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"/>
             </StackPanel>
@@ -138,16 +138,49 @@
             </Border>
 
             <!-- Helper Window -->
-            <Border x:Name="HelperWindow" Visibility="Collapsed" Grid.RowSpan="2" Grid.ColumnSpan="2" Style="{StaticResource BorderStyle}">
-                <StackPanel>
-                    <Button Content="X" Style="{StaticResource CloseButtonStyle}"
-                            Click="OnHelperWindowClose"/>
-                    <TextBlock Text="Rules" FontFamily="Arial" HorizontalAlignment="Center" FontSize="50" FontWeight="Bold" Margin="0, 0, 0 60"/>
-                    <TextBlock FontFamily="Arial" FontSize="30" TextWrapping="Wrap">
-                        Move the snake with the mouse and try to eat as many fruits as possible to get points. 
-                        Avoid hitting rocks as that will result in a loss.
-                    </TextBlock>
-                </StackPanel>
+            <Border x:Name="HelperWindow" Visibility="Collapsed" Grid.RowSpan="2" Grid.ColumnSpan="2" Style="{StaticResource BorderStyle}" >
+                <ScrollViewer Padding="30, 0, 30, 0 ">
+                    <StackPanel>
+                        <Button Content="X" Style="{StaticResource CloseButtonStyle}"
+                                        Click="OnHelperWindowClose"/>
+                        <TextBlock Text="Rules" FontFamily="Arial" HorizontalAlignment="Center" FontSize="50" FontWeight="Bold" Margin="0, 0, 0 60"/>
+                        <TextBlock FontFamily="Arial" FontSize="30" TextWrapping="Wrap" Margin="0, 0, 0 60">
+                                    Navigate the snake with the mouse and try to eat as many fruits as possible to get points. 
+                                    Avoid hitting bushes as that will result in a loss. You can also pick potions that spawn on the field for special effects.
+                        </TextBlock>
+                        <TextBlock Text="Objects" FontFamily="Arial" HorizontalAlignment="Center" FontSize="40" Margin="20, 20, 20, 20"/>
+                        <StackPanel Orientation="Horizontal" Margin="20, 20, 20, 10">
+                            <Image Source="pack://application:,,,/Assets/Textures/Obstacles/bush.png" Width="64" Height="64" Margin="0, 0, 20, 0"/>
+                            <TextBlock Text="Obstacle" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontFamily="Ariel" Foreground="Black"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="20, 20, 20, 10">
+                            <Image Source="pack://application:,,,/Assets/Textures/Fruits/apple.png" Width="64" Height="64" Margin="0, 0, 20, 0"/>
+                            <TextBlock Text="Apple - 5 Points" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontFamily="Ariel" Foreground="Black"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="20, 20, 20, 10">
+                            <Image Source="pack://application:,,,/Assets/Textures/Fruits/carrot.png" Width="64" Height="64" Margin="0, 0, 20, 0"/>
+                            <TextBlock Text="Carrot - 8 Points" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontFamily="Ariel" Foreground="Black"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="20, 20, 20, 10">
+                            <Image Source="pack://application:,,,/Assets/Textures/Fruits/pineapple.png" Width="64" Height="64" Margin="0, 0, 20, 0"/>
+                            <TextBlock Text="Pineapple - 10 Points" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontFamily="Ariel" Foreground="Black"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="20, 20, 20, 60">
+                            <Image Source="pack://application:,,,/Assets/Textures/Potions/potion_double_score.png" Width="64" Height="64" Margin="0, 0, 20, 0"/>
+                            <TextBlock Text="Orange Potion - PointsX2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontFamily="Ariel" Foreground="Black"/>
+                        </StackPanel>
+                        <TextBlock Text="Difficulty Levels" FontFamily="Arial" HorizontalAlignment="Center" FontSize="40" Margin="20, 20, 20, 20"/>
+                        <TextBlock Text="Easy" Foreground="Green" FontWeight="Bold" FontFamily="Arial" FontSize="30" Margin="20, 20, 20, 10"/>
+                        <TextBlock Text=" - very few obstacles" FontFamily="Arial" FontSize="30" Margin="20, 20, 20, 10"/>
+                        <TextBlock Text=" - fruits spawn every 6 seconds." FontFamily="Arial" FontSize="30" Margin="20, 20, 20, 10"/>
+                        <TextBlock Text="Medium" Foreground="Yellow" FontWeight="Bold" FontFamily="Arial" FontSize="40" Margin="20, 20, 20, 10"/>
+                        <TextBlock Text=" - medium amount of obstacles" FontFamily="Arial" FontSize="30" Margin="20, 20, 20, 10"/>
+                        <TextBlock Text=" - fruits spawn every 5 seconds." FontFamily="Arial" FontSize="30" Margin="20, 20, 20, 10"/>
+                        <TextBlock Text="Hard" Foreground="Red" FontWeight="Bold" FontFamily="Arial" FontSize="30" Margin="20, 20, 20, 10"/>
+                        <TextBlock Text=" - a lot of obstacles" FontFamily="Arial" FontSize="30" Margin="20, 20, 20, 10"/>
+                        <TextBlock Text=" - fruits spawn every 4 seconds." FontFamily="Arial" FontSize="30" Margin="20, 20, 20, 10"/>
+                    </StackPanel>
+                </ScrollViewer>
             </Border>
         </Grid>
     </Border>

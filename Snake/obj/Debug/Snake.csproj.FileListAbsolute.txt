@@ -1,9 +1,14 @@
 C:\Dev\C#\SnakeGame\Snake\obj\Debug\Snake.csprojAssemblyReference.cache
 C:\Dev\C#\SnakeGame\Snake\obj\Debug\MainWindow.g.cs
+C:\Dev\C#\SnakeGame\Snake\obj\Debug\UI\Game.g.cs
+C:\Dev\C#\SnakeGame\Snake\obj\Debug\UI\MainMenu.g.cs
 C:\Dev\C#\SnakeGame\Snake\obj\Debug\App.g.cs
+C:\Dev\C#\SnakeGame\Snake\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Dev\C#\SnakeGame\Snake\obj\Debug\Snake_MarkupCompile.cache
 C:\Dev\C#\SnakeGame\Snake\obj\Debug\Snake_MarkupCompile.lref
 C:\Dev\C#\SnakeGame\Snake\obj\Debug\MainWindow.baml
+C:\Dev\C#\SnakeGame\Snake\obj\Debug\UI\Game.baml
+C:\Dev\C#\SnakeGame\Snake\obj\Debug\UI\MainMenu.baml
 C:\Dev\C#\SnakeGame\Snake\obj\Debug\Snake.g.resources
 C:\Dev\C#\SnakeGame\Snake\obj\Debug\Snake.Properties.Resources.resources
 C:\Dev\C#\SnakeGame\Snake\obj\Debug\Snake.csproj.GenerateResource.cache
@@ -17,8 +22,3 @@ C:\Dev\C#\SnakeGame\Snake\Snake.exe
 C:\Dev\C#\SnakeGame\Snake\Snake.pdb
 C:\Dev\C#\SnakeGame\Snake\Engine.dll
 C:\Dev\C#\SnakeGame\Snake\Engine.pdb
-C:\Dev\C#\SnakeGame\Snake\obj\Debug\GeneratedInternalTypeHelper.g.cs
-C:\Dev\C#\SnakeGame\Snake\obj\Debug\UI\MainMenu.g.cs
-C:\Dev\C#\SnakeGame\Snake\obj\Debug\UI\MainMenu.baml
-C:\Dev\C#\SnakeGame\Snake\obj\Debug\UI\Game.g.cs
-C:\Dev\C#\SnakeGame\Snake\obj\Debug\UI\Game.baml

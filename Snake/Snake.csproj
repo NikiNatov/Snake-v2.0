@@ -151,9 +151,6 @@
     <Resource Include="Resource\score_board_background.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Textures\bush.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Assets\Textures\white_texture.png" />
   </ItemGroup>
   <ItemGroup>
@@ -167,6 +164,33 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Textures\Obstacles\ground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Textures\Fruits\apple.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Textures\Fruits\carrot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Textures\Fruits\pineapple.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Textures\Potions\potion_double_score.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Textures\Potions\potion_shield.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Textures\Snake\snake_body.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Textures\Snake\snake_head.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Textures\Snake\snake_tail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Textures\Obstacles\bush.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.6.3.0\build\Fody.targets" Condition="Exists('..\packages\Fody.6.3.0\build\Fody.targets')" />

@@ -118,8 +118,14 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="apple" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Textures\Fruits\apple.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="bush" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Textures\bush.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Assets\Textures\Obstacles\bush.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="carrot" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Textures\Fruits\carrot.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="easy_map" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Levels\easy_map.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -136,8 +142,26 @@
   <data name="medium_map" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Levels\medium_map.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="pineapple" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Textures\Fruits\pineapple.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="potion_double_score" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Textures\Potions\potion_double_score.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="potion_shield" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Textures\Potions\potion_shield.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="score_board_background" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resource\score_board_background.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="snake_body" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Textures\Snake\snake_body.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="snake_head" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Textures\Snake\snake_head.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="snake_tail" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Textures\Snake\snake_tail.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="white_texture" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Textures\white_texture.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

@@ -94,7 +94,7 @@
 
         <Canvas Grid.Column="0" Width="960" Height="992" x:Name="canvas">
             <Canvas.Background>
-                <ImageBrush ImageSource="pack://application:,,,/Assets/Textures/Obstacles/ground.png" Viewport="0, 0, 0.16, 0.16" TileMode="Tile"/>
+                <ImageBrush ImageSource="pack://application:,,,/Assets/Textures/Obstacles/ground.png" Viewport="0, 0, 0.0666, 0.0645" TileMode="Tile"/>
             </Canvas.Background>
             <!-- Drawing all the entities in the world as rectangles -->
             <ItemsControl ItemsSource="{Binding Path=GameObjects}">

@@ -1,8 +1,10 @@
 ﻿using System.Windows;
 using Engine;
+using PropertyChanged;
 
 namespace SnakeGame
 {
+    [AddINotifyPropertyChangedInterface]
     /// <summary>
     /// Represents a fruit eatable by the snake
     /// </summary>

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Engine;
+using PropertyChanged;
 
 namespace SnakeGame
 {
@@ -29,6 +30,7 @@ namespace SnakeGame
         PointsX2
     }
 
+    [AddINotifyPropertyChangedInterface]
     /// <summary>
     /// Represents a potion with certain effect
     /// </summary>
