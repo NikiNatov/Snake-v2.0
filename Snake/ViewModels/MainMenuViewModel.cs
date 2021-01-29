@@ -7,12 +7,32 @@ namespace SnakeGame
     /// </summary>
     public class MainMenuViewModel : BaseViewModel
     {
+        #region Data members
+
+        /// <summary>
+        /// Difficulty level
+        /// </summary>
+        private GameDifficulty mDifficultyLevel;
+
+        #endregion
+
         #region Properties
 
         /// <summary>
         /// Gets and sets the game difficulty
         /// </summary>
-        public GameDifficulty DifficultyLevel { get; set; }
+        public GameDifficulty DifficultyLevel
+        {
+            get { return mDifficultyLevel; }
+            set
+            {
+                if (mDifficultyLevel != value)
+                {
+                    mDifficultyLevel = value;
+                    OnPropertyChanged(nameof(DifficultyLevel));
+                }
+            }
+        }
 
         #endregion
 

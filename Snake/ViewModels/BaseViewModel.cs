@@ -1,12 +1,10 @@
-﻿using PropertyChanged;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 
 namespace SnakeGame
 {
     /// <summary>
     /// Base view model that fires PropertyChanged events
     /// </summary>
-    [AddINotifyPropertyChangedInterface]
     public class BaseViewModel : INotifyPropertyChanged
     {
         /// <summary>

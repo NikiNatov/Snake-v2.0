@@ -1,10 +1,8 @@
 ﻿using System.Windows;
 using Engine;
-using PropertyChanged;
 
 namespace SnakeGame
 {
-    [AddINotifyPropertyChangedInterface]
     /// <summary>
     /// Represents a fruit eatable by the snake
     /// </summary>
@@ -27,7 +25,14 @@ namespace SnakeGame
         public int ScorePoints
         {
             get { return mScorePoints; }
-            set { mScorePoints = value >= 0 ? value : 0; }
+            set 
+            {
+                if (value != mScorePoints)
+                {
+                    mScorePoints = value >= 0 ? value : 0;
+                    OnPropertyChanged(nameof(ScorePoints));
+                }
+            }
         }
 
         #endregion

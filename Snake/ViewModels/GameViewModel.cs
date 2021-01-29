@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
@@ -80,6 +81,41 @@ namespace SnakeGame
         /// </summary>
         private DispatcherTimer mEffectTimer;
 
+        /// <summary>
+        /// World map data
+        /// </summary>
+        private Map mWorldMap;
+
+        /// <summary>
+        /// Remaining time of the effect
+        /// </summary>
+        private int mPotionEffectRemainingTime;
+
+        /// <summary>
+        /// Game objects list
+        /// </summary>
+        private ObservableCollection<GameObject> mGameObjects;
+
+        /// <summary>
+        /// Player score
+        /// </summary>
+        private int mScore;
+
+        /// <summary>
+        /// Currently active potion
+        /// </summary>
+        private Potion mActivePoition;
+
+        /// <summary>
+        /// Current game state
+        /// </summary>
+        private GameState mGameState;
+
+        /// <summary>
+        /// Game difficulty
+        /// </summary>
+        private GameDifficulty mGameDifficulty;
+
         #endregion
 
         #region Properties
@@ -87,37 +123,114 @@ namespace SnakeGame
         /// <summary>
         /// Gets and sets the world map
         /// </summary>
-        public Map WorldMap { get; set; }
+        public Map WorldMap 
+        {
+            get { return mWorldMap; }
+            set
+            {
+                if(mWorldMap != value)
+                {
+                    mWorldMap = value;
+                    OnPropertyChanged(nameof(WorldMap));
+                }
+            }
+        }
 
         /// <summary>
         /// Gets and sets the remaining time of the potion effect in seconds
         /// </summary>
-        public int PotionEffectRemainingTime { get; set; }
+        public int PotionEffectRemainingTime
+        {
+            get { return mPotionEffectRemainingTime; }
+            set
+            {
+                if (mPotionEffectRemainingTime != value)
+                {
+                    mPotionEffectRemainingTime = value;
+                    OnPropertyChanged(nameof(PotionEffectRemainingTime));
+                }
+            }
+        }
 
         /// <summary>
         /// Gets and sets all game objects in the world 
         /// </summary>
-        public ObservableCollection<GameObject> GameObjects { get; set; }
+        public ObservableCollection<GameObject> GameObjects
+        {
+            get { return mGameObjects; }
+            set
+            {
+                if (mGameObjects != value)
+                {
+                    mGameObjects = value;
+                    OnPropertyChanged(nameof(GameObjects));
+                }
+            }
+        }
 
         /// <summary>
         /// Gets and sets player's score points
         /// </summary>
-        public int Score { get; set; }
+        public int Score
+        {
+            get { return mScore; }
+            set
+            {
+                if (mScore != value)
+                {
+                    mScore = value;
+                    OnPropertyChanged(nameof(Score));
+                }
+            }
+        }
 
         /// <summary>
         /// Gets and sets the current active potion
         /// </summary>
-        public Potion ActivePotion { get; set; }
+        public Potion ActivePotion
+        {
+            get { return mActivePoition; }
+            set
+            {
+                if (mActivePoition != value)
+                {
+                    mActivePoition = value;
+                    OnPropertyChanged(nameof(ActivePotion));
+                }
+            }
+        }
 
         /// <summary>
         /// Gets and sets the state of the game
         /// </summary>
-        public GameState State { get; set; }
+        public GameState State
+        {
+            get { return mGameState; }
+            set
+            {
+                if (mGameState != value)
+                {
+                    mGameState = value;
+                    OnPropertyChanged(nameof(State));
+                }
+            }
+        }
 
         /// <summary>
         /// Gets and sets the game difficulty
         /// </summary>
-        public GameDifficulty DifficultyLevel { get; set; }
+        public GameDifficulty DifficultyLevel
+        {
+            get { return mGameDifficulty; }
+            set
+            {
+                if (mGameDifficulty != value)
+                {
+                    mGameDifficulty = value;
+                    OnPropertyChanged(nameof(DifficultyLevel));
+                }
+            }
+        }
 
         #endregion
 
@@ -292,16 +405,16 @@ namespace SnakeGame
                 switch(fruitType)
                 {
                     case 1:
-                        fruit = new Fruit(10, FRUIT_SIZE, FRUIT_SIZE, TextureManager.GetTexture("Assets/Textures/Fruits/pineapple.png"), new Point(x, y), 0, new Point(1.0, 1.0));
+                        fruit = new Fruit(10, FRUIT_SIZE, FRUIT_SIZE, TextureManager.GetTexture("Assets\\Textures\\Fruits\\pineapple.png"), new Point(x, y), 0, new Point(1.0, 1.0));
                         break;
                     case 2:
-                        fruit = new Fruit(8, FRUIT_SIZE, FRUIT_SIZE, TextureManager.GetTexture("Assets/Textures/Fruits/carrot.png"), new Point(x, y), 0, new Point(1.0, 1.0));
+                        fruit = new Fruit(8, FRUIT_SIZE, FRUIT_SIZE, TextureManager.GetTexture("Assets\\Textures\\Fruits\\carrot.png"), new Point(x, y), 0, new Point(1.0, 1.0));
                         break;
                     case 3:
-                        fruit = new Fruit(5, FRUIT_SIZE, FRUIT_SIZE, TextureManager.GetTexture("Assets/Textures/Fruits/apple.png"), new Point(x, y), 0, new Point(1.0, 1.0));
+                        fruit = new Fruit(5, FRUIT_SIZE, FRUIT_SIZE, TextureManager.GetTexture("Assets\\Textures\\Fruits\\apple.png"), new Point(x, y), 0, new Point(1.0, 1.0));
                         break;
                     case 4:
-                        fruit = new Potion(PotionEffect.PointsX2, FRUIT_SIZE, FRUIT_SIZE, TextureManager.GetTexture("Assets/Textures/Potions/potion_double_score.png"), new Point(x, y), 0, new Point(1.0, 1.0));
+                        fruit = new Potion(PotionEffect.PointsX2, FRUIT_SIZE, FRUIT_SIZE, TextureManager.GetTexture("Assets\\Textures\\Potions\\potion_double_score.png"), new Point(x, y), 0, new Point(1.0, 1.0));
                         break;
                 }
                 
@@ -406,17 +519,17 @@ namespace SnakeGame
             {
                 case GameDifficulty.Easy:
                 {
-                    WorldMap = new Map("Assets/Levels/easy_map.png", TERRAIN_WIDTH, TERRAIN_HEIGHT);
+                    WorldMap = new Map("Assets\\Levels\\easy_map.png", TERRAIN_WIDTH, TERRAIN_HEIGHT);
                     break;
                 }
                 case GameDifficulty.Medium:
                 {
-                    WorldMap = new Map("Assets/Levels/medium_map.png", TERRAIN_WIDTH, TERRAIN_HEIGHT);
+                    WorldMap = new Map("Assets\\Levels\\medium_map.png", TERRAIN_WIDTH, TERRAIN_HEIGHT);
                     break;
                 }
                 case GameDifficulty.Hard:
                 {
-                    WorldMap = new Map("Assets/Levels/hard_map.png", TERRAIN_WIDTH, TERRAIN_HEIGHT);
+                    WorldMap = new Map("Assets\\Levels\\hard_map.png", TERRAIN_WIDTH, TERRAIN_HEIGHT);
                     break;
                 }
             }
@@ -427,30 +540,11 @@ namespace SnakeGame
         /// </summary>
         private void LoadAssets()
         {
-            // Snake
-            TextureManager.UploadTexture("Assets/Textures/Snake/snake_head.png");
-            TextureManager.UploadTexture("Assets/Textures/Snake/snake_body.png");
-            TextureManager.UploadTexture("Assets/Textures/Snake/snake_tail.png");
+            string[] textures = Directory.GetFiles("Assets\\", "*.*", SearchOption.AllDirectories);
 
-            // Obstacles
-            TextureManager.UploadTexture("Assets/Textures/Obstacles/ground.png");
-            TextureManager.UploadTexture("Assets/Textures/Obstacles/bush.png");
-
-            // Fruits
-            TextureManager.UploadTexture("Assets/Textures/Fruits/pineapple.png");
-            TextureManager.UploadTexture("Assets/Textures/Fruits/apple.png");
-            TextureManager.UploadTexture("Assets/Textures/Fruits/carrot.png");
-
-            // Potions
-            TextureManager.UploadTexture("Assets/Textures/Potions/potion_double_score.png");
-
-            // Debug textures
-            TextureManager.UploadTexture("Assets/Textures/white_texture.png");
-
-            // Level maps
-            TextureManager.UploadTexture("Assets/Levels/easy_map.png");
-            TextureManager.UploadTexture("Assets/Levels/medium_map.png");
-            TextureManager.UploadTexture("Assets/Levels/hard_map.png");
+            foreach(var texture in textures)
+                TextureManager.UploadTexture(texture);
+            
         }
 
         /// <summary>
@@ -466,7 +560,7 @@ namespace SnakeGame
             for (int i = 0; i < WorldMap.Width; i++)
                 for (int j = 0; j < WorldMap.Height; j++)
                     if (WorldMap.MapData[j * 4 + i * WorldMap.Stride] == 0 && WorldMap.MapData[j * 4 + 1 + i * WorldMap.Stride] == 0 && WorldMap.MapData[j * 4 + 2 + i * WorldMap.Stride] == 0)
-                        GameObjects.Add(new Obstacle(TILE_SIZE, TILE_SIZE, TextureManager.GetTexture("Assets/Textures/Obstacles/bush.png"), new Point(j * TILE_SIZE, i * TILE_SIZE), 0, new Point(1.0, 1.0)));
+                        GameObjects.Add(new Obstacle(TILE_SIZE, TILE_SIZE, TextureManager.GetTexture("Assets\\Textures\\Obstacles\\bush.png"), new Point(j * TILE_SIZE, i * TILE_SIZE), 0, new Point(1.0, 1.0)));
         }
 
         /// <summary>
@@ -474,8 +568,8 @@ namespace SnakeGame
         /// </summary>
         private void CreateSnake()
         {
-            SnakeComponent head = new SnakeComponent(SNAKE_WIDTH, SNAKE_HEIGHT, TextureManager.GetTexture("Assets/Textures/Snake/snake_head.png"), new Point(80, 104), 0, new Point(1.0, 1.0));
-            SnakeComponent tail = new SnakeComponent(SNAKE_WIDTH, SNAKE_HEIGHT, TextureManager.GetTexture("Assets/Textures/Snake/snake_tail.png"), new Point(80, 64), 0, new Point(1.0, 1.0));
+            SnakeComponent head = new SnakeComponent(SNAKE_WIDTH, SNAKE_HEIGHT, TextureManager.GetTexture("Assets\\Textures\\Snake\\snake_head.png"), new Point(80, 104), 0, new Point(1.0, 1.0));
+            SnakeComponent tail = new SnakeComponent(SNAKE_WIDTH, SNAKE_HEIGHT, TextureManager.GetTexture("Assets\\Textures\\Snake\\snake_tail.png"), new Point(80, 64), 0, new Point(1.0, 1.0));
 
             GameObjects.Add(tail);
             mTailIndex = GameObjects.Count - 1;
@@ -492,7 +586,7 @@ namespace SnakeGame
             double xPos = GameObjects[mTailIndex].Transformation.Position.X;
             double yPos = GameObjects[mTailIndex].Transformation.Position.Y;
             double rotation = GameObjects[mTailIndex].Transformation.RotationAngle;
-            SnakeComponent piece = new SnakeComponent(SNAKE_WIDTH, SNAKE_HEIGHT, TextureManager.GetTexture("Assets/Textures/Snake/snake_body.png"), new Point(xPos, yPos), rotation, new Point(1.0, 1.0));
+            SnakeComponent piece = new SnakeComponent(SNAKE_WIDTH, SNAKE_HEIGHT, TextureManager.GetTexture("Assets\\Textures\\Snake\\snake_body.png"), new Point(xPos, yPos), rotation, new Point(1.0, 1.0));
             AddGameObject(piece);
         }
 
@@ -560,7 +654,8 @@ namespace SnakeGame
             State = GameState.PLAY;
             mGameTimer.Start();
             mFruitSpawner.Start();
-            mEffectTimer.Start();
+            if (ActivePotion != null)
+                mEffectTimer.Start();
         }
 
         /// <summary>

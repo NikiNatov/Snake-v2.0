@@ -188,10 +188,10 @@ namespace Engine
         /// <returns>Returns true if there is a collision and false if there is not</returns>
         virtual public bool CollidesWith(GameObject gameObject)
         {
-            Rect aabb1 = GameMath.CalculateBoundingBox(this); 
-            Rect aabb2 = GameMath.CalculateBoundingBox(gameObject); 
-
-            return aabb1.IntersectsWith(aabb2);
+            Rect bb1 = GameMath.CalculateBoundingBox(this); 
+            Rect bb2 = GameMath.CalculateBoundingBox(gameObject); 
+            
+            return bb1.IntersectsWith(bb2);
         }
 
         #endregion

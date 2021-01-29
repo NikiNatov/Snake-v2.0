@@ -13,12 +13,32 @@ namespace SnakeGame
     public class ApplicationViewModel : BaseViewModel
     {
 
+        #region Data members
+
+        /// <summary>
+        /// Currently active view
+        /// </summary>
+        public BaseViewModel mCurrentView;
+
+        #endregion
+
         #region Properties
 
         /// <summary>
         /// Gets and sets the currently displayed view
         /// </summary>
-        public BaseViewModel CurrentView { get; set; }
+        public BaseViewModel CurrentView
+        {
+            get { return mCurrentView; }
+            set
+            {
+                if (mCurrentView != value)
+                {
+                    mCurrentView = value;
+                    OnPropertyChanged(nameof(CurrentView));
+                }
+            }
+        }
 
         #endregion
 

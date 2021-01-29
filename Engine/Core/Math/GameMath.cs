@@ -40,9 +40,10 @@ namespace Engine
             transform.Children.Add(new RotateTransform(obj.Transformation.RotationAngle, obj.Width / 2, obj.Height / 2));
             transform.Children.Add(new TranslateTransform(obj.Transformation.Position.X, obj.Transformation.Position.Y));
 
+            // Positions are offset by 10 for more accurate bounding box
             Point tl1 = transform.Value.Transform(new Point(6, 6));
             Point tr1 = transform.Value.Transform(new Point(obj.Width - 6, 6));
-            Point bl1 = transform.Value.Transform(new Point(6, obj.Height - 6));
+            Point bl1 = transform.Value.Transform(new Point(4, obj.Height - 6));
             Point br1 = transform.Value.Transform(new Point(obj.Width - 6, obj.Height - 6));
 
             double minX1 = Math.Min(tl1.X, Math.Min(tr1.X, Math.Min(bl1.X, br1.X)));
@@ -51,7 +52,7 @@ namespace Engine
             double maxY1 = Math.Max(tl1.Y, Math.Max(tr1.Y, Math.Max(bl1.Y, br1.Y)));
             Point min1 = new Point(minX1, minY1);
             Point max1 = new Point(maxX1, maxY1);
-
+            
             return new Rect(min1, max1 - min1);
         }
     }

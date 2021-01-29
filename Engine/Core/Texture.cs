@@ -117,7 +117,7 @@ namespace Engine
 
             Width = ImageSource.PixelWidth;
             Height = ImageSource.PixelHeight;
-            Name = filepath.Substring(filepath.LastIndexOf('/') + 1);
+            Name = filepath.Substring(filepath.LastIndexOf('\\') + 1);
             Filepath = filepath;   
         }
 

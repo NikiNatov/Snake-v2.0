@@ -1,10 +1,8 @@
 ﻿using System.Windows;
 using Engine;
-using PropertyChanged;
 
 namespace SnakeGame
 {
-    [AddINotifyPropertyChangedInterface]
     /// <summary>
     /// Represents a collidable object in the game world
     /// </summary>
